@@ -155,26 +155,12 @@
 
     invoke-static {v4, v2, v3}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;Z)V
 
-    .line 92
-    invoke-virtual {p0}, Lcom/mediatek/ims/ImsApp;->getMainExecutor()Ljava/util/concurrent/Executor;
-
-    move-result-object v2
-
-    invoke-static {p0, v2}, Lcom/mediatek/ims/OplusImsServiceControllerExt;->make(Landroid/content/Context;Ljava/util/concurrent/Executor;)Lcom/mediatek/ims/OplusImsServiceControllerExt;
-
-    .line 93
-    invoke-static {}, Lcom/mediatek/ims/OplusImsServiceControllerExt;->getInstance()Lcom/mediatek/ims/OplusImsServiceControllerExt;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v0}, Lcom/mediatek/ims/OplusImsServiceControllerExt;->initService(Lcom/mediatek/ims/MtkImsService;)V
-
-    .line 96
+    .line 91
     const-string v2, "ImsApp onCreate end"
 
     invoke-static {v1, v2}, Landroid/telephony/Rlog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 98
+    .line 93
     invoke-static {}, Landroid/telephony/TelephonyManager;->getDefault()Landroid/telephony/TelephonyManager;
 
     move-result-object v1
@@ -185,14 +171,14 @@
 
     iput v1, p0, Lcom/mediatek/ims/ImsApp;->mNumOfPhones:I
 
-    .line 101
+    .line 96
     new-instance v1, Landroid/content/Intent;
 
     const-string v2, "com.mediatek.ims.MTK_IMS_SERVICE_UP"
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 102
+    .line 97
     .local v1, "intent":Landroid/content/Intent;
     invoke-virtual {p0}, Lcom/mediatek/ims/ImsApp;->getApplicationContext()Landroid/content/Context;
 
@@ -200,23 +186,23 @@
 
     invoke-virtual {v2, v1}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 104
+    .line 99
     new-instance v2, Landroid/content/IntentFilter;
 
     invoke-direct {v2}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 105
+    .line 100
     .local v2, "multiSimConfigChanged":Landroid/content/IntentFilter;
     const-string v3, "android.telephony.action.MULTI_SIM_CONFIG_CHANGED"
 
     invoke-virtual {v2, v3}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 106
+    .line 101
     iget-object v3, p0, Lcom/mediatek/ims/ImsApp;->mMultiSimConfigChangedReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {p0, v3, v2}, Lcom/mediatek/ims/ImsApp;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 108
+    .line 103
     .end local v0    # "mtkImsService":Lcom/mediatek/ims/MtkImsService;
     .end local v1    # "intent":Landroid/content/Intent;
     .end local v2    # "multiSimConfigChanged":Landroid/content/IntentFilter;
